@@ -11,9 +11,3 @@ const count = ref(0)
   <input />
   <button @click=count++>{{count}}</button>
 </template>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
