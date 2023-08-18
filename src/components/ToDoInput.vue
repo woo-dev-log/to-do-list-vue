@@ -4,18 +4,22 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-    data() {
-        return {
-            contents: '',
-        }
-    },
     emits: ['addList'],
-    methods: {
-        addList() {
-            if (!this.contents) return;
-            this.$emit('addList', this.contents);
-            this.contents = ''
+    setup(_, { emit }) {
+        const contents = ref("");
+
+        function addList() {
+            if (!contents.value) return;
+            emit('addList', contents.value);
+            contents.value = ""
+        }
+
+        return {
+            contents,
+            addList
         }
     }
 }

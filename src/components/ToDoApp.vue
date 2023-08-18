@@ -8,30 +8,33 @@
 
 <script>
 import ToDoInput from './ToDoInput.vue';
+import { ref } from 'vue';
 
 export default {
-  data() {
-    return {
-      list: []
-    }
-  },
   props: {
     msg: String
   },
   components: {
     ToDoInput
   },
-  methods: {
-    addList(contents) {
-      this.list.push(contents);
+  setup() {
+    const list = ref([]);
+
+    function addList(contents) {
+      list.value.push(contents);
+    }
+
+    return {
+      list,
+      addList
     }
   }
 }
 </script>
 
 <style scoped>
-  li {
-    font-size: 20px;
-    font-weight: bold;
-  }
+li {
+  font-size: 20px;
+  font-weight: bold;
+}
 </style>
